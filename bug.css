@@ -1,0 +1,26 @@
+The following CSS code snippet demonstrates an uncommon error related to the specificity of CSS selectors:
+
+```css
+div {
+  color: blue;
+}
+
+.my-class {
+  color: red;
+}
+
+#my-id {
+  color: green;
+}
+
+.my-class #my-id {
+  color: purple;
+}
+
+#my-id.my-class {
+  color: orange;
+}
+
+```
+
+The unexpected behavior arises when an element has both the class `my-class` and the ID `my-id`.  The specificity rules in CSS dictate that the last selector (`#my-id.my-class`) is more specific than `.my-class #my-id` because it combines an ID and a class which beats an element selector plus a class selector.  Thus, the final color of the element will be orange, not purple, which is a less intuitive result for developers unfamiliar with CSS specificity.
